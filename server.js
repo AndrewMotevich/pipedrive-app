@@ -7,7 +7,8 @@ import { redirect } from "react-router-dom";
 import pipedrive from "pipedrive";
 
 // Constants
-const isProduction = process.env.NODE_ENV === "production";
+// const isProduction = process.env.NODE_ENV === "production";
+const isProduction = true;
 const port = process.env.PORT || 5173;
 const base = process.env.BASE || "/";
 const apiClient = new pipedrive.ApiClient();
@@ -38,6 +39,7 @@ app.use(
     keys: ["key1"],
   })
 );
+app.use(express.static("dist"));
 
 app.get("/", (req, res) => {
   apiClient.authentications.oauth2.accessToken = req.session.accessToken;
