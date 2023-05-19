@@ -4,9 +4,9 @@ import { error } from "node:console";
 import cookieParser from "cookie-parser";
 import cookieSession from "cookie-session";
 import { redirect } from "react-router-dom";
+import pipedrive from "pipedrive";
 
 // Constants
-const pipedrive = require("pipedrive");
 const isProduction = process.env.NODE_ENV === "production";
 const port = process.env.PORT || 5173;
 const base = process.env.BASE || "/";
@@ -38,12 +38,6 @@ app.use(
     keys: ["key1"],
   })
 );
-
-declare module "express-session" {
-  export interface SessionData {
-    accessToken: { [key: string]: any };
-  }
-}
 
 app.get("/", (req, res) => {
   apiClient.authentications.oauth2.accessToken = req.session.accessToken;
