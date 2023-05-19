@@ -1,6 +1,5 @@
-import { Fragment, useState } from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, Navigate } from "react-router-dom";
 import Main from "./pages/Main";
 import About from "./pages/About";
 import Form from "./pages/Form";
@@ -11,7 +10,7 @@ function App() {
       <nav>
         <ul>
           <li>
-            <Link to={"/"}>Main</Link>
+            <Link to={"/main"}>Main</Link>
           </li>
           <li>
             <Link to={"/form"}>Form</Link>
@@ -22,9 +21,10 @@ function App() {
         </ul>
       </nav>
       <Routes>
-        <Route path="/" element={<Main />} />
+        <Route path="/main" element={<Main />} />
         <Route path="/form" element={<Form />} />
         <Route path="/about" element={<About />} />
+        <Route path="/" element={<Navigate to="/main" />} />
       </Routes>
     </div>
   );

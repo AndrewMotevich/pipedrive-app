@@ -5,7 +5,7 @@ import { StaticRouter } from "react-router-dom/server";
 
 export function render() {
   const html = ReactDOMServer.renderToString(
-    <StaticRouter location={"/"}>
+    <StaticRouter location={"/main"}>
       <App />
     </StaticRouter>
   );
