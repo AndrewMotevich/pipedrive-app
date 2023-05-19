@@ -11,5 +11,12 @@
   <body>
     <div id="root"><!--app-html--></div>
     <script type="module" src="/src/entry-client.tsx"></script>
+    <body>
+      <script>
+        (async function() {
+          const sdk = await new AppExtensionsSDK().initialize();
+        })();
+      </script>
+    </body>
   </body>
 </html>
