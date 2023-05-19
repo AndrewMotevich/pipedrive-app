@@ -11,8 +11,10 @@
     "preview": "cross-env NODE_ENV=production node server"
   },
   "dependencies": {
+    "@pipedrive/app-extensions-sdk": "^0.8.0",
     "compression": "^1.7.4",
     "express": "^4.18.2",
+    "pipedrive": "^19.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sirv": "^2.0.2"
