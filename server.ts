@@ -4,11 +4,10 @@ import { error } from "node:console";
 import cookieParser from "cookie-parser";
 import cookieSession from "cookie-session";
 import { redirect } from "react-router-dom";
-import pipedrive from "pipedrive";
 
 // Constants
-// const isProduction = process.env.NODE_ENV === "production";
-const isProduction = true;
+const pipedrive = require("pipedrive");
+const isProduction = process.env.NODE_ENV === "production";
 const port = process.env.PORT || 5173;
 const base = process.env.BASE || "/";
 const apiClient = new pipedrive.ApiClient();
@@ -39,7 +38,12 @@ app.use(
     keys: ["key1"],
   })
 );
-app.use(express.static("dist"));
+
+declare module "express-session" {
+  export interface SessionData {
+    accessToken: { [key: string]: any };
+  }
+}
 
 app.get("/", (req, res) => {
   apiClient.authentications.oauth2.accessToken = req.session.accessToken;
@@ -105,7 +109,7 @@ if (!isProduction) {
 }
 
 // Serve HTML
-app.use("*", async (req, res) => {
+app.use("/main", async (req, res) => {
   try {
     const url = req.originalUrl.replace(base, "");
 
