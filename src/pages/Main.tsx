@@ -7,9 +7,9 @@ const Main = () => {
   useEffect(() => {
     (async () => {
       await axios
-        .get<object[]>("https://pipedrive-app.vercel.app/api/deals")
+        .get<{ data: [] }>("https://pipedrive-app.vercel.app/api/deals")
         .then((res) => {
-          if (res.data) {
+          if (res.data.data) {
             console.log(res);
             return setDeals(res.data as unknown as { title: string }[]);
           }
