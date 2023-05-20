@@ -1,6 +1,5 @@
 import fs from "node:fs/promises";
 import express from "express";
-import { error } from "node:console";
 import cookieParser from "cookie-parser";
 import cookieSession from "cookie-session";
 import cors from "cors";

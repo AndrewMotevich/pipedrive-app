@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import { closeActivityModal, getCustomUISDK } from "../components/sdk";
 
 const addDeal = async () => {
   await axios
@@ -14,6 +15,10 @@ const addDeal = async () => {
 };
 
 const Form = () => {
+  async function close() {
+    const sdk = await getCustomUISDK();
+    if (sdk !== undefined) await closeActivityModal(sdk);
+  }
   return (
     <div>
       <input type="text" />
@@ -24,6 +29,13 @@ const Form = () => {
         }}
       >
         add new deal
+      </button>
+      <button
+        onClick={() => {
+          close();
+        }}
+      >
+        Close
       </button>
     </div>
   );
