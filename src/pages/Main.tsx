@@ -10,6 +10,7 @@ const Main = () => {
         .get<object[]>("https://pipedrive-app.vercel.app/api/deals")
         .then((res) => {
           if (res.data) {
+            console.log(res);
             return setDeals(res.data as unknown as { title: string }[]);
           }
         });
