@@ -73,6 +73,7 @@ app.get("/api/refresh", async (req, res) => {
   const refreshPromise = apiClient.refreshToken() as Promise<object>;
   await refreshPromise.then(
     (res) => {
+      req.session.accessToken = apiClient.authentications.oauth2.accessToken;
       TOKENS = res;
     },
     (error) => {
