@@ -36,7 +36,7 @@ declare module "express-session" {
   }
 }
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   apiClient.authentications.oauth2.accessToken = req.session.accessToken;
   if (req.session.accessToken !== null && req.session.accessToken !== undefined) {
     return res.redirect("/main");
@@ -46,7 +46,7 @@ app.get("/", (req, res) => {
   }
 });
 
-app.get("/deals", async (req, res) => {
+app.get("/api/deals", async (req, res) => {
   if (req.session.accessToken !== null && req.session.accessToken !== undefined) {
     const deals = await api.getDeals();
 
@@ -58,7 +58,7 @@ app.get("/deals", async (req, res) => {
   }
 });
 
-app.get("/callback", (req, res) => {
+app.get("/api/callback", (req, res) => {
   const code = req.query.code;
   const tokenPromise = apiClient.authorize(code) as Promise<object>;
 
@@ -69,7 +69,7 @@ app.get("/callback", (req, res) => {
   res.redirect("/");
 });
 
-app.get("/refresh", (req, res) => {
+app.get("/api/refresh", (req, res) => {
   const refreshPromise = apiClient.refreshToken() as Promise<object>;
   refreshPromise.then(
     (res) => {
