@@ -3,7 +3,7 @@ import express from "express";
 import { error } from "node:console";
 import cookieParser from "cookie-parser";
 import cookieSession from "cookie-session";
-import { redirect } from "react-router-dom";
+import cors from "cors";
 // @ts-ignore
 import pipedrive from "pipedrive";
 
@@ -19,9 +19,30 @@ oauth2.clientId = "0494d1b7cd096deb";
 oauth2.clientSecret = "cf32220b35508cce863201560369ed77046a1356";
 oauth2.redirectUri = "https://pipedrive-app.vercel.app/api/callback";
 
+export const Cors = {
+  origin: [
+    "http://localhost:8080",
+    "http://localhost:4200",
+    "http://127.0.0.1:4200",
+    "http://127.0.0.1:8080",
+    "http://127.0.0.1:5500",
+    "https://oauth.pipedrive.com",
+  ],
+  methods: "GET,PATCH,POST,DELETE,OPTIONS",
+  allowedHeaders: [
+    "X-admin-pass",
+    "X-hash-pass",
+    "Library",
+    "Content-Type",
+    "Authorization",
+  ],
+  credentials: true,
+};
+
 // Create http server
 const app = express();
 
+app.use(cors(Cors));
 app.use(cookieParser());
 app.use(
   cookieSession({
