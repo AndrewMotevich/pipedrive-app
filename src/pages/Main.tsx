@@ -11,7 +11,7 @@ const Main = () => {
         .then((res) => {
           if (res.data.data) {
             console.log(res);
-            return setDeals(res.data as unknown as { title: string }[]);
+            return setDeals(res.data.data as unknown as { title: string }[]);
           }
         });
     })();
