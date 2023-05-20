@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 
-const handler = (req: Request, res: Response) => {
-  res.end("hello world");
-};
+export default async function handler(request: Request, response: Response) {
+  return response.json({
+    success: true,
+  });
+}
