@@ -22,6 +22,7 @@ oauth2.redirectUri = "https://pipedrive-app.vercel.app/api/callback";
 export const Cors = {
   origin: [
     "http://localhost:8080",
+    "http://localhost:5173",
     "http://localhost:4200",
     "http://127.0.0.1:4200",
     "http://127.0.0.1:8080",
@@ -106,9 +107,8 @@ app.get("/api/deals", async (req, res) => {
 
 app.post("/api/deals", async (req, res) => {
   let opts = pipedrive.NewDeal.constructFromObject({
-    title: req.body.title,
+    title: "req.body.title",
   });
-  console.log(req.body.title);
   console.log(opts);
   return await api.addDeal(opts).then(
     () => res.end("Deal was added"),
