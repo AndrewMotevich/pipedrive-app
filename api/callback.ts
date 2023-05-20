@@ -10,5 +10,5 @@ export default async function callback(req: Request, res: Response) {
   const tokenPromise = apiClient.authorize(code);
 
   tokenPromise.then((res) => (TOKENS = res));
-  res.json(TOKENS);
+  return res.json(TOKENS);
 }
