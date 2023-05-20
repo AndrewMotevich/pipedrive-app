@@ -66,7 +66,7 @@ app.get("/api/callback", (req, res) => {
   req.session.accessToken = apiClient.authentications.oauth2.accessToken;
 
   tokenPromise.then((res) => (TOKENS = res));
-  res.redirect("/");
+  res.json(TOKENS);
 });
 
 app.get("/api/refresh", (req, res) => {
