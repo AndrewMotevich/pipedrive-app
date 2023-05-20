@@ -18,6 +18,13 @@ const Form = () => {
     <div>
       <input type="text" />
       <input type="password" />
+      <button
+        onClick={() => {
+          addDeal();
+        }}
+      >
+        add new deal
+      </button>
     </div>
   );
 };
