@@ -108,6 +108,8 @@ app.post("/api/deals", async (req, res) => {
   let opts = pipedrive.NewDeal.constructFromObject({
     title: req.body.title,
   });
+  console.log(req.body.title);
+  console.log(opts);
   return await api.addDeal(opts).then(
     () => res.end("Deal was added"),
     () => {
