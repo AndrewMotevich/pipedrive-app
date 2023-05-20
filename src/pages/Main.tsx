@@ -1,8 +1,19 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
 import { useState } from "react";
 
 const Main = () => {
-  return <div className="App">Hello Welcome to pipedrive app</div>;
+  const [deals, setDeals] = useState<{ title: string }[]>([]);
+  useEffect(() => {
+    (async () => {
+      await axios
+        .get<object[]>("https://pipedrive-app.vercel.app/api/deals")
+        .then((res) => {
+          return setDeals(res as unknown as { title: string }[]);
+        });
+    })();
+  }, []);
+  return <div className="App">{deals[0].title}</div>;
 };
 
 export default Main;

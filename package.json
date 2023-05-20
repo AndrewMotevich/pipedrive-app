@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@pipedrive/app-extensions-sdk": "^0.8.0",
+    "axios": "^1.4.0",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.6",
     "cookie-session": "^2.0.0",
@@ -20,6 +21,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.2",
+    "sass": "^1.62.1",
     "sirv": "^2.0.2",
     "vitest": "^0.31.1"
   },

@@ -46,16 +46,18 @@ app.get("/api", (req, res) => {
   }
 });
 
-app.get("/api/deals", async (req, res) => {
-  if (req.session.accessToken !== null && req.session.accessToken !== undefined) {
-    const deals = await api.getDeals();
-
-    res.send(deals);
-  } else {
-    const authUrl = apiClient.buildAuthorizationUrl();
-
-    res.redirect(authUrl);
-  }
+app.get("/api/refresh", async (req, res) => {
+  const refreshPromise = apiClient.refreshToken() as Promise<object>;
+  await refreshPromise.then(
+    (res) => {
+      req.session.accessToken = apiClient.authentications.oauth2.accessToken;
+      TOKENS = res;
+    },
+    (error) => {
+      console.log(error);
+    }
+  );
+  return res.json(TOKENS);
 });
 
 app.get("/api/callback", async (req, res) => {
@@ -69,18 +71,16 @@ app.get("/api/callback", async (req, res) => {
   res.json(TOKENS);
 });
 
-app.get("/api/refresh", async (req, res) => {
-  const refreshPromise = apiClient.refreshToken() as Promise<object>;
-  await refreshPromise.then(
-    (res) => {
-      req.session.accessToken = apiClient.authentications.oauth2.accessToken;
-      TOKENS = res;
-    },
-    (error) => {
-      console.log(error);
-    }
-  );
-  return res.json(TOKENS);
+app.get("/api/deals", async (req, res) => {
+  if (req.session.accessToken !== null && req.session.accessToken !== undefined) {
+    const deals = await api.getDeals();
+
+    res.send(deals);
+  } else {
+    const authUrl = apiClient.buildAuthorizationUrl();
+
+    res.redirect(authUrl);
+  }
 });
 
 // Start http server
