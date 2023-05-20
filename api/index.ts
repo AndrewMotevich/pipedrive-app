@@ -58,20 +58,20 @@ app.get("/api/deals", async (req, res) => {
   }
 });
 
-app.get("/api/callback", (req, res) => {
+app.get("/api/callback", async (req, res) => {
   const code = req.query.code;
   const tokenPromise = apiClient.authorize(code) as Promise<object>;
 
   // add access token to session
   req.session.accessToken = apiClient.authentications.oauth2.accessToken;
 
-  tokenPromise.then((res) => (TOKENS = res));
+  await tokenPromise.then((res) => (TOKENS = res));
   res.json(TOKENS);
 });
 
-app.get("/api/refresh", (req, res) => {
+app.get("/api/refresh", async (req, res) => {
   const refreshPromise = apiClient.refreshToken() as Promise<object>;
-  refreshPromise.then(
+  await refreshPromise.then(
     (res) => {
       TOKENS = res;
     },
