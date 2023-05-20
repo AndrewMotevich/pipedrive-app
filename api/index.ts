@@ -104,6 +104,18 @@ app.get("/api/deals", async (req, res) => {
   }
 });
 
+app.post("/api/deals", async (req, res) => {
+  let opts = pipedrive.NewDeal.constructFromObject({
+    title: req.body.title,
+  });
+  return await api.addDeal(opts).then(
+    () => res.end("Deal was added"),
+    () => {
+      res.status(500).json({ message: "something wrong" });
+    }
+  );
+});
+
 // Start http server
 app.listen(port, () => {
   console.log(`Server started at http://localhost:${port}`);
