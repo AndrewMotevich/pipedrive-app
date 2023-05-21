@@ -29,13 +29,7 @@ export const Cors = {
     "https://example-sandbox.pipedrive.com",
   ],
   methods: "GET,PATCH,POST,DELETE,OPTIONS",
-  allowedHeaders: [
-    "X-admin-pass",
-    "X-hash-pass",
-    "Library",
-    "Content-Type",
-    "Authorization",
-  ],
+  allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
 };
 
@@ -118,7 +112,12 @@ app.get("/api/v2/deals", async (req, res) => {
 
 app.post("/api/deals", async (req, res) => {
   let opts = pipedrive.NewDeal.constructFromObject({
-    title: "req.body.title",
+    title: `Job ${new Date().toDateString()}`,
+    person_id: {
+      name: "FirstName LastName",
+      email: [{ value: "Example@value.com" }],
+      phone: [{ value: "25252525" }],
+    },
   });
   console.log(opts);
   return await api.addDeal(opts).then(

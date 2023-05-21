@@ -40,9 +40,13 @@ const Main = () => {
   }, []);
 
   return (
-    <div className="App">
-      {deals.map((elem) => {
-        return <div>{elem.title}</div>;
+    <div className="deals-wrapper">
+      {deals.map((elem, index) => {
+        return (
+          <div key={index} className="deals">
+            {elem.title}
+          </div>
+        );
       })}
     </div>
   );

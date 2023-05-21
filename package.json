@@ -11,6 +11,9 @@
     "preview": "cross-env NODE_ENV=production node server"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.13.1",
     "@pipedrive/app-extensions-sdk": "^0.8.0",
     "axios": "^1.4.0",
     "compression": "^1.7.4",
@@ -21,6 +24,7 @@
     "pipedrive": "^19.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.43.9",
     "react-router-dom": "^6.11.2",
     "sass": "^1.62.1",
     "sirv": "^2.0.2",
