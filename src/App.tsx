@@ -1,4 +1,3 @@
-import "./App.scss";
 import { Routes, Route, Link, Navigate } from "react-router-dom";
 import Main from "./pages/Main";
 import About from "./pages/About";
@@ -22,7 +21,7 @@ function App() {
       <nav className="nav-wrapper">
         <ul className="ul-wrapper">
           <li>
-            <Link to={"/main"}>Main</Link>
+            <Link to={"/"}>Main</Link>
           </li>
           <li>
             <Link to={"/form"}>Form</Link>
@@ -40,10 +39,9 @@ function App() {
         </button>
       </nav>
       <Routes>
-        <Route path="/main" element={<Main />} />
+        <Route path="/" element={<Main />} />
         <Route path="/form" element={<Form />} />
         <Route path="/about" element={<About />} />
-        <Route path="/" element={<Navigate to="/main" />} />
       </Routes>
     </LocalizationProvider>
   );

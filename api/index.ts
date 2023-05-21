@@ -56,7 +56,7 @@ declare module "express-session" {
 app.get("/api", (req, res) => {
   apiClient.authentications.oauth2.accessToken = req.session.accessToken;
   if (req.session.accessToken !== null && req.session.accessToken !== undefined) {
-    return res.redirect("/main");
+    return res.redirect("/");
   } else {
     const authUrl = apiClient.buildAuthorizationUrl();
     res.redirect(authUrl);

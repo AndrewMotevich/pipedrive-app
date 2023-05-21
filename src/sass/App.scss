@@ -97,6 +97,7 @@
   gap: 1rem;
   justify-content: center;
 }
+
 .buttons-wrapper {
   margin-top: 1rem;
   display: flex;
@@ -105,4 +106,13 @@
   button {
     width: 7rem;
   }
+}
+
+.about {
+  max-width: 30rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
