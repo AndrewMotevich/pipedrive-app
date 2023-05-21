@@ -17,7 +17,4 @@ export const closeActivityModal = async (sdk: AppExtensionsSDK) => {
 
 (async function () {
   const sdk = await getCustomUISDK();
-  setTimeout(() => {
-    sdk?.execute(Command.CLOSE_MODAL);
-  }, 10000);
 })();
