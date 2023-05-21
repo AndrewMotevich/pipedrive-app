@@ -5,6 +5,8 @@ import About from "./pages/About";
 import Form from "./pages/Form";
 import { getCustomUISDK } from "./components/sdk";
 import AppExtensionsSDK from "@pipedrive/app-extensions-sdk";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 function App() {
   async function close() {
@@ -16,7 +18,7 @@ function App() {
   }
 
   return (
-    <div>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
       <nav className="nav-wrapper">
         <ul className="ul-wrapper">
           <li>
@@ -43,7 +45,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/" element={<Navigate to="/main" />} />
       </Routes>
-    </div>
+    </LocalizationProvider>
   );
 }
 

@@ -89,3 +89,20 @@
     outline: 4px auto -webkit-focus-ring-color;
   }
 }
+
+.form-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+.buttons-wrapper {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  button {
+    width: 7rem;
+  }
+}

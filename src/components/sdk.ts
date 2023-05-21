@@ -5,7 +5,9 @@ let SDK: AppExtensionsSDK;
 export const getCustomUISDK = async () => {
   try {
     if (SDK) return SDK;
-    SDK = await new AppExtensionsSDK().initialize();
+    SDK = await new AppExtensionsSDK().initialize({
+      size: { height: 550, width: 550 },
+    });
     return SDK;
   } catch (e) {}
 };

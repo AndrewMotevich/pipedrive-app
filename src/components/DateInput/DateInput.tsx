@@ -1,6 +1,6 @@
 import React from "react";
 import { Controller } from "react-hook-form";
-import TextField from "@mui/material/TextField";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 type props = {
   name: string;
   label: string;
@@ -8,14 +8,16 @@ type props = {
   [key: string]: unknown;
 };
 
-export const TextInput = ({ name, label, control, ...prop }: props) => {
+const DateInput = ({ name, label, control, ...prop }: props) => {
   return (
     <Controller
       name={name}
       control={control}
       render={({ field: { onChange, value } }) => (
-        <TextField {...prop} onChange={onChange} value={value} label={label} />
+        <DatePicker {...prop} onChange={onChange} value={value} label={label} />
       )}
     />
   );
 };
+
+export default DateInput;
