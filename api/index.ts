@@ -111,13 +111,9 @@ app.get("/api/v2/deals", async (req, res) => {
 });
 
 app.post("/api/deals", async (req, res) => {
+  const title = req.body["firstName"];
   let opts = pipedrive.NewDeal.constructFromObject({
-    title: `Job ${new Date().toDateString()}`,
-    person_id: {
-      name: "FirstName LastName",
-      email: [{ value: "Example@value.com" }],
-      phone: [{ value: "25252525" }],
-    },
+    title: `Job ${title}`,
   });
   console.log(opts);
   return await api.addDeal(opts).then(
