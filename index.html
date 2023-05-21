@@ -15,11 +15,12 @@
   <script type="module" src="/src/entry-client.tsx"></script>
 
   <body>
-    <!-- <script>
-        (async function() {
-          const sdk = await new AppExtensionsSDK().initialize();
-        })();
-      </script> -->
+    <script>
+      import { getCustomUISDK } from "../components/sdk";
+      (async function () {
+        const sdk = await getCustomUISDK;
+      })();
+    </script>
   </body>
 </body>
 
