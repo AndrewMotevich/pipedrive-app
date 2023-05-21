@@ -3,8 +3,15 @@ import { Routes, Route, Link, Navigate } from "react-router-dom";
 import Main from "./pages/Main";
 import About from "./pages/About";
 import Form from "./pages/Form";
+import { useEffect } from "react";
+import { getCustomUISDK } from "./components/sdk";
 
 function App() {
+  useEffect(() => {
+    (async () => {
+      const sdk = await getCustomUISDK();
+    })();
+  }, []);
   return (
     <div>
       <nav>
