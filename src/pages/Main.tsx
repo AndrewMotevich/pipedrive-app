@@ -6,9 +6,11 @@ const Main = () => {
   const [accessToken, setAccessToken] = useState<string>("");
   const [deals, setDeals] = useState<{ title: string }[]>([{ title: "" }]);
 
-  const getDeals = async () => {
+  const getDeals = async (token: string) => {
     await axios
-      .get<{ data: [] }>("https://pipedrive-app.vercel.app/api/deals")
+      .get<{ data: [] }>("https://example-sandbox.pipedrive.com/api/v1/deals", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then((res) => {
         if (res.data.data) {
           console.log(res);
@@ -30,8 +32,9 @@ const Main = () => {
           }
         })
         .then(async (token) => {
-          console.log(token);
-          await getDeals();
+          if (token != undefined) {
+            await getDeals(token);
+          }
         });
     })();
   }, []);
