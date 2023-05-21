@@ -16,7 +16,7 @@ const Main = () => {
       });
   };
   useEffect(() => {
-    async () => {
+    (async () => {
       await axios
         .get<{ access_token: string }>(
           "https://pipedrive-app.vercel.app/api/refresh"
@@ -27,7 +27,7 @@ const Main = () => {
             return setAccessToken(res.data.access_token);
           }
         });
-    };
+    })();
   }, []);
   return <div className="App">{accessToken}</div>;
 };
