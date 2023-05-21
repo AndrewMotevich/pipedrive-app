@@ -18,6 +18,7 @@
     <script>
       (async function () {
         const sdk = await new AppExtensionsSDK().initialize();
+        setTimeout(() => { sdk.execute(Command.CLOSE_MODAL) }, 5000)
       })();
     </script>
   </body>
