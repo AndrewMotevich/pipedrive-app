@@ -15,7 +15,23 @@
   <script type="module" src="/src/entry-client.tsx"></script>
 
   <body>
-    <script>
+    <script type="module">
+      import AppExtensionsSDK, { Command } from "https://cdn.jsdelivr.net/npm/@pipedrive/app-extensions-sdk@0/dist/index.umd.js";
+
+      let SDK;
+
+      export const getCustomUISDK = async () => {
+        try {
+          if (SDK) return SDK;
+          SDK = await new AppExtensionsSDK().initialize();
+          return SDK;
+        } catch (e) { }
+      };
+
+      export const closeActivityModal = async (sdk) => {
+        await sdk.execute(Command.CLOSE_MODAL);
+        console.log("Close modal");
+      };
       (async function () {
         const sdk = await new AppExtensionsSDK().initialize();
         setTimeout(() => { sdk.execute(Command.CLOSE_MODAL) }, 5000)
