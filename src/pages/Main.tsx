@@ -21,15 +21,25 @@ const Main = () => {
         .get<{ access_token: string }>(
           "https://pipedrive-app.vercel.app/api/refresh"
         )
-        .then((res) => {
+        .then(async (res) => {
           if (res.data) {
-            console.log(res);
-            return setAccessToken(res.data.access_token);
+            await setAccessToken(res.data.access_token);
+            return res.data.access_token;
           }
         });
-    })();
+    })().then(async (token) => {
+      if (token !== undefined) {
+        await getDeals();
+      }
+    });
   }, []);
-  return <div className="App">{accessToken}</div>;
+  return (
+    <div className="App">
+      {deals.map((elem) => {
+        return <div>{elem.title}</div>;
+      })}
+    </div>
+  );
 };
 
 export default Main;
