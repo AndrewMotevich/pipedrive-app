@@ -6,7 +6,7 @@
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vite + React + TS</title>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/@pipedrive/app-extensions-sdk@0/dist/index.umd.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/@pipedrive/app-extensions-sdk@0/dist/index.umd.js"></script>
   <!--app-head-->
 </head>
 
@@ -15,10 +15,9 @@
   <script type="module" src="/src/entry-client.tsx"></script>
 
   <body>
-    <script type="module">
-      import { getCustomUISDK } from "../components/sdk";
+    <script>
       (async function () {
-        const sdk = await getCustomUISDK;
+        const sdk = await new AppExtensionsSDK().initialize();
       })();
     </script>
   </body>

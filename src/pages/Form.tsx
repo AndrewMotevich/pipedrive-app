@@ -17,7 +17,10 @@ const addDeal = async () => {
 const Form = () => {
   async function close() {
     const sdk = await getCustomUISDK();
-    if (sdk !== undefined) await closeActivityModal(sdk);
+    if (sdk !== undefined) {
+      console.log("Close modal");
+      await closeActivityModal(sdk);
+    }
   }
   return (
     <div>
@@ -31,8 +34,8 @@ const Form = () => {
         add new deal
       </button>
       <button
-        onClick={() => {
-          close();
+        onClick={async () => {
+          await close();
         }}
       >
         Close
