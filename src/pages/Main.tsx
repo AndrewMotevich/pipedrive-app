@@ -5,6 +5,7 @@ import { useState } from "react";
 const Main = () => {
   const [accessToken, setAccessToken] = useState<string>("");
   const [deals, setDeals] = useState<{ title: string }[]>([{ title: "" }]);
+
   const getDeals = async () => {
     await axios
       .get<{ data: [] }>("https://pipedrive-app.vercel.app/api/deals")
@@ -15,6 +16,7 @@ const Main = () => {
         }
       });
   };
+
   useEffect(() => {
     (async () => {
       await axios
@@ -26,13 +28,14 @@ const Main = () => {
             await setAccessToken(res.data.access_token);
             return res.data.access_token;
           }
+        })
+        .then(async (token) => {
+          console.log(token);
+          await getDeals();
         });
-    })().then(async (token) => {
-      if (token !== undefined) {
-        await getDeals();
-      }
-    });
+    })();
   }, []);
+
   return (
     <div className="App">
       {deals.map((elem) => {
