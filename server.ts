@@ -38,7 +38,6 @@ if (!isProduction) {
 app.use("*", async (req, res) => {
   try {
     const url = req.originalUrl.replace(base, "/");
-    console.log(url);
 
     let template;
     let render;

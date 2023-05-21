@@ -17,6 +17,7 @@ export const closeActivityModal = async (sdk: AppExtensionsSDK) => {
   console.log("Close modal");
 };
 
+// initialize SDK
 (async function () {
-  const sdk = await getCustomUISDK();
+  await getCustomUISDK();
 })();

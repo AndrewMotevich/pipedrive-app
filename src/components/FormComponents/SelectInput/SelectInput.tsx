@@ -1,14 +1,9 @@
 import React from "react";
 import { Controller } from "react-hook-form";
 import { MenuItem, TextField } from "@mui/material";
-type props = {
-  name: string;
-  label: string;
-  control: any;
-  [key: string]: unknown;
-};
+import { FormPropsType } from "../../../models/formProps.model";
 
-const SelectInput = ({ name, label, control, ...prop }: props) => {
+const SelectInput = ({ name, label, control, ...prop }: FormPropsType) => {
   return (
     <Controller
       name={name}

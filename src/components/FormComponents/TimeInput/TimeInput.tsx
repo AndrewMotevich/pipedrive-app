@@ -1,14 +1,9 @@
 import { TimePicker } from "@mui/x-date-pickers";
 import { Controller } from "react-hook-form";
 import React from "react";
-type props = {
-  name: string;
-  label: string;
-  control: any;
-  [key: string]: unknown;
-};
+import { FormPropsType } from "../../../models/formProps.model";
 
-const TimeInput = ({ name, label, control, ...prop }: props) => {
+const TimeInput = ({ name, label, control, ...prop }: FormPropsType) => {
   return (
     <Controller
       name={name}

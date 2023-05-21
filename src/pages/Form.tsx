@@ -2,10 +2,10 @@ import React from "react";
 import axios from "axios";
 import { closeActivityModal, getCustomUISDK } from "../components/sdk";
 import { FieldValues, useForm } from "react-hook-form";
-import { TextInput } from "../components/TextInput/TextInput";
-import DateInput from "../components/DateInput/DateInput";
-import TimeInput from "../components/TimeInput/TimeInput";
-import SelectInput from "../components/SelectInput/SelectInput";
+import { TextInput } from "../components/FormComponents/TextInput/TextInput";
+import DateInput from "../components/FormComponents/DateInput/DateInput";
+import TimeInput from "../components/FormComponents/TimeInput/TimeInput";
+import SelectInput from "../components/FormComponents/SelectInput/SelectInput";
 
 const addDeal = async (data: FieldValues) => {
   await axios.post("https://pipedrive-app.vercel.app/api/deals", data);
@@ -18,7 +18,6 @@ const Form = () => {
   async function close() {
     const sdk = await getCustomUISDK();
     if (sdk !== undefined) {
-      console.log("Close modal");
       await closeActivityModal(sdk);
     }
   }
