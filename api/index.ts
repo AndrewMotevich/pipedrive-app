@@ -107,6 +107,18 @@ app.get("/api/deals", async (req, res) => {
   }
 });
 
+app.get("/api/v2/deals", async (req, res) => {
+  if (req.session.accessToken !== null && req.session.accessToken !== undefined) {
+    const deals = await api.getDeals();
+
+    res.send(deals);
+  } else {
+    const authUrl = apiClient.buildAuthorizationUrl();
+
+    res.redirect(authUrl);
+  }
+});
+
 app.post("/api/deals", async (req, res) => {
   let opts = pipedrive.NewDeal.constructFromObject({
     title: "req.body.title",
