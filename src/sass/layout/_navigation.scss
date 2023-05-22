@@ -1,0 +1,22 @@
+.nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    border-radius: 50%;
+  }
+}
+
+.ul-wrapper {
+  display: flex;
+  list-style-type: none;
+  li {
+    margin-left: 1rem;
+  }
+}
