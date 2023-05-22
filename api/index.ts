@@ -114,8 +114,8 @@ app.get("/api/v2/deals", async (req, res) => {
 app.post("/api/deals", jsonParser, async (req, res) => {
   let person = {
     name: `${req.body.firstName} ${req.body.lastName}`,
-    phone: req.body.tel,
-    email: req.body.email,
+    // phone: req.body.tel,
+    // email: req.body.email,
   };
   let details = {
     title: `Job ${new Date().toDateString()}`,
@@ -142,8 +142,8 @@ app.post("/api/deals", jsonParser, async (req, res) => {
         }
       );
     },
-    () => {
-      console.error("Error: failed to add person");
+    (err: Error) => {
+      console.error("Error: failed to add person", err);
     }
   );
 });
