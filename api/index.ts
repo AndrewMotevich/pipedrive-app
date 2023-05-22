@@ -111,7 +111,12 @@ app.get("/api/v2/deals", async (req, res) => {
 });
 
 app.post("/api/deals", jsonParser, async (req, res) => {
-  let opts = {
+  let person = {
+    name: `${req.body.firstName} ${req.body.lastName}`,
+    phone: req.body.tel,
+    email: req.body.email,
+  };
+  let details = {
     title: `Job ${new Date().toDateString()}`,
     "8aca43e96e0e0f529d5fdff8e68a5f65b465c13a": req.body.jobType,
     "8ce27142967e13865f1ef032a5f6655d45c8ea10": req.body.jobSource,
@@ -127,11 +132,17 @@ app.post("/api/deals", jsonParser, async (req, res) => {
     a410d5e410a890bc06410f91d1efa36477139ca7: req.body.zipCode,
     personId: 7,
   };
-  console.log(opts);
-  return await api.addDeal(opts).then(
-    () => res.end("Deal was added"),
+  return await api.addPerson(person).then(
+    async (person: any) => {
+      return await api.addDeal(details).then(
+        () => res.end({ message: "Deal was added", person }),
+        () => {
+          res.status(500).json({ message: "something wrong" });
+        }
+      );
+    },
     () => {
-      res.status(500).json({ message: "something wrong" });
+      console.error("Error: failed to add person");
     }
   );
 });
