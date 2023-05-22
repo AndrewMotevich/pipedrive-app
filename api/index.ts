@@ -24,6 +24,7 @@ const Cors = {
 const port = process.env.PORT || 5173;
 const apiClient = new pipedrive.ApiClient();
 const api = new pipedrive.DealsApi(apiClient);
+const apiPerson = new pipedrive.DealsApi(apiClient);
 const jsonParser = bodyParser.json();
 let TOKENS = {};
 
@@ -132,16 +133,14 @@ app.post("/api/deals", jsonParser, async (req, res) => {
     a410d5e410a890bc06410f91d1efa36477139ca7: req.body.zipCode,
     personId: 7,
   };
-  return await api.addPerson(person).then(
-    // async (person: any) => {
-    //   return await api.addDeal(details).then(
-    //     () => res.end({ message: "Deal was added", person }),
-    //     () => {
-    //       res.status(500).json({ message: "something wrong" });
-    //     }
-    //   );
-    (person: any) => {
-      res.end({ message: "Deal was added", person });
+  return await apiPerson.addPerson(person).then(
+    async (person: any) => {
+      return await api.addDeal(details).then(
+        () => res.end({ message: "Deal was added", person }),
+        () => {
+          res.status(500).json({ message: "something wrong" });
+        }
+      );
     },
     () => {
       console.error("Error: failed to add person");
