@@ -122,11 +122,10 @@ app.post("/api/deals", jsonParser, async (req, res) => {
     "7abb387c024019b327a394c985d9f8262fdf8f7b": req.body.area,
     "81ca8ad4c48436a7ad024949a4c252b16cc6b01b": req.body.startDate,
     "001475dd726aa494db1c698fd97a1a23ce8e7355": req.body.startTime,
-    // "001475dd726aa494db1c698fd97a1a23ce8e7355_timezone_id": 310,
     "305a5f76b69a170b4eb185ffc68d9b2e80e0170b": req.body.endTime,
-    // "305a5f76b69a170b4eb185ffc68d9b2e80e0170b_timezone_id": 310,
     ec84fcdb2fbb691bf9a12bf0f47004e55c46debf: req.body.testSelect,
     a410d5e410a890bc06410f91d1efa36477139ca7: req.body.zipCode,
+    personId: 7,
   };
   console.log(opts);
   return await api.addDeal(opts).then(
