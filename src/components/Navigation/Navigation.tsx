@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { closeActivityModal, getCustomUISDK } from "../sdk";
+import { closeActivityModal, getCustomUISDK } from "../../shared/sdk";
 
 const Navigation = () => {
   async function close() {

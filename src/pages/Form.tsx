@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { closeActivityModal, getCustomUISDK } from "../components/sdk";
+import { closeActivityModal, getCustomUISDK } from "../shared/sdk";
 import { FieldValues, useForm } from "react-hook-form";
 import { TextInput } from "../components/FormComponents/TextInput/TextInput";
 import DateInput from "../components/FormComponents/DateInput/DateInput";
@@ -23,8 +23,11 @@ const Form = () => {
   }
 
   const onSubmit = (data: FieldValues) => {
-    console.log(data);
-    // addDeal(data);
+    const dataObject = { ...data };
+    dataObject.startDate = data.startDate.format("YYYY-MM-DD");
+    dataObject.startTime = data.startTime.format("HH:mm:00");
+    dataObject.endTime = data.endTime.format("HH:mm:00");
+    addDeal(dataObject);
   };
 
   return (
