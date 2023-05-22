@@ -111,23 +111,23 @@ app.get("/api/v2/deals", async (req, res) => {
 });
 
 app.post("/api/deals", jsonParser, async (req, res) => {
-  let opts = pipedrive.NewDeal.constructFromObject({
+  let opts = {
     title: `Job ${new Date().toDateString()}`,
-    "8aca43e96e0e0f529d5fdff8e68a5f65b465c13a": req.body.jobType,
-    "8ce27142967e13865f1ef032a5f6655d45c8ea10": req.body.jobSource,
-    "719eea2bc017593ec818583ef0b1fba77f49cee2": req.body.jobDescription,
-    d71c6545fe0dd5d6570fff4bf9182e9ce230d5b8: req.body.address,
-    aae9ff04fcf089726b972d0345b3c8431250701b: req.body.city,
-    "2933b080c9a7c9ed2f37967d50988da031cc9f49": req.body.state,
-    "7abb387c024019b327a394c985d9f8262fdf8f7b": req.body.area,
-    "81ca8ad4c48436a7ad024949a4c252b16cc6b01b": req.body.startDate,
-    "001475dd726aa494db1c698fd97a1a23ce8e7355": req.body.startTime,
-    "001475dd726aa494db1c698fd97a1a23ce8e7355_timezone_id": 310,
-    "305a5f76b69a170b4eb185ffc68d9b2e80e0170b": req.body.endTime,
-    "305a5f76b69a170b4eb185ffc68d9b2e80e0170b_timezone_id": 310,
-    ec84fcdb2fbb691bf9a12bf0f47004e55c46debf: req.body.testSelect,
-    a410d5e410a890bc06410f91d1efa36477139ca7: req.body.zipCode,
-  });
+    // "8aca43e96e0e0f529d5fdff8e68a5f65b465c13a": req.body.jobType,
+    // "8ce27142967e13865f1ef032a5f6655d45c8ea10": req.body.jobSource,
+    // "719eea2bc017593ec818583ef0b1fba77f49cee2": req.body.jobDescription,
+    // d71c6545fe0dd5d6570fff4bf9182e9ce230d5b8: req.body.address,
+    // aae9ff04fcf089726b972d0345b3c8431250701b: req.body.city,
+    // "2933b080c9a7c9ed2f37967d50988da031cc9f49": req.body.state,
+    // "7abb387c024019b327a394c985d9f8262fdf8f7b": req.body.area,
+    // "81ca8ad4c48436a7ad024949a4c252b16cc6b01b": req.body.startDate,
+    // "001475dd726aa494db1c698fd97a1a23ce8e7355": req.body.startTime,
+    // "001475dd726aa494db1c698fd97a1a23ce8e7355_timezone_id": 310,
+    // "305a5f76b69a170b4eb185ffc68d9b2e80e0170b": req.body.endTime,
+    // "305a5f76b69a170b4eb185ffc68d9b2e80e0170b_timezone_id": 310,
+    // ec84fcdb2fbb691bf9a12bf0f47004e55c46debf: req.body.testSelect,
+    // a410d5e410a890bc06410f91d1efa36477139ca7: req.body.zipCode,
+  };
   console.log(opts);
   return await api.addDeal(opts).then(
     () => res.end("Deal was added"),
