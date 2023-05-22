@@ -24,7 +24,7 @@ const Cors = {
 const port = process.env.PORT || 5173;
 const apiClient = new pipedrive.ApiClient();
 const api = new pipedrive.DealsApi(apiClient);
-const apiPerson = new pipedrive.DealsApi(apiClient);
+const apiPerson = new pipedrive.PersonsApi(apiClient);
 const jsonParser = bodyParser.json();
 let TOKENS = {};
 
