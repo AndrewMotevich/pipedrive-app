@@ -8,6 +8,17 @@ Functionality:
 - Create new deal
 - Use ui (UI modal window)
 ***
+# Features:
+- ### React
+- ### TypeScript
+- ### [MUI](https://mui.com/)
+- ### [Pipedrive node client](https://github.com/pipedrive/client-nodejs)
+- ### [Pipedrive SDK](https://github.com/pipedrive/app-extensions-sdk)
+- ### Vite and vitest with SSR
+- ### NodeJs
+- ### Express
+- ### Vercel
+***
 # Preview:
 ![image](https://github.com/AndrewMotevich/pipedrive-app/assets/101500007/d93e09c7-b9bd-4c2e-b1b5-05df6cb6e1b9)
 ## Main page with deals list
