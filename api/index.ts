@@ -133,13 +133,15 @@ app.post("/api/deals", jsonParser, async (req, res) => {
     personId: 7,
   };
   return await api.addPerson(person).then(
-    async (person: any) => {
-      return await api.addDeal(details).then(
-        () => res.end({ message: "Deal was added", person }),
-        () => {
-          res.status(500).json({ message: "something wrong" });
-        }
-      );
+    // async (person: any) => {
+    //   return await api.addDeal(details).then(
+    //     () => res.end({ message: "Deal was added", person }),
+    //     () => {
+    //       res.status(500).json({ message: "something wrong" });
+    //     }
+    //   );
+    (person: any) => {
+      res.end({ message: "Deal was added", person });
     },
     () => {
       console.error("Error: failed to add person");
