@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOMServer from "react-dom/server";
+// @ts-ignore
 import App from "./App";
 import { StaticRouter } from "react-router-dom/server";
 

@@ -84,7 +84,7 @@ app.get("/api/callback", async (req, res) => {
   req.session.accessToken = apiClient.authentications.oauth2.accessToken;
 
   await tokenPromise.then((res) => (TOKENS = res));
-  res.json(TOKENS);
+  return res.redirect("/");
 });
 
 app.get("/api/deals", async (req, res) => {

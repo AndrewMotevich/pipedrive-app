@@ -28,6 +28,7 @@ const Form = () => {
     dataObject.startTime = data.startTime.format("HH:mm:00");
     dataObject.endTime = data.endTime.format("HH:mm:00");
     addDeal(dataObject);
+    close();
   };
 
   return (
