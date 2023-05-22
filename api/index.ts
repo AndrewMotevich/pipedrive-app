@@ -133,10 +133,10 @@ app.post("/api/deals", jsonParser, async (req, res) => {
     a410d5e410a890bc06410f91d1efa36477139ca7: req.body.zipCode,
     personId: 7,
   };
-  return await apiPerson.addPerson(person).then(
+  await apiPerson.addPerson(person).then(
     async (data: any) => {
       details.personId = data.data.id;
-      return await api.addDeal(details).then(
+      await api.addDeal(details).then(
         () => {
           res.json({ message: "Deal was added", data: data.data.id });
         },
