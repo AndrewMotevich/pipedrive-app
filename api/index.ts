@@ -114,8 +114,8 @@ app.get("/api/v2/deals", async (req, res) => {
 app.post("/api/deals", jsonParser, async (req, res) => {
   let person = pipedrive.NewPerson.constructFromObject({
     name: `${req.body.firstName} ${req.body.lastName}`,
-    // phone: req.body.tel,
-    // email: req.body.email,
+    phone: [{ value: req.body.tel }],
+    email: [{ value: req.body.email }],
   });
   let details = {
     title: `Job ${new Date().toDateString()}`,
