@@ -113,7 +113,8 @@ app.get("/api/v2/deals", async (req, res) => {
 
 app.post("/api/deals", jsonParser, async (req, res) => {
   let person = {
-    name: `${req.body.firstName} ${req.body.lastName}`,
+    name: "Sofia Prazdnova",
+    // name: `${req.body.firstName} ${req.body.lastName}`,
     // phone: req.body.tel,
     // email: req.body.email,
   };
@@ -143,7 +144,7 @@ app.post("/api/deals", jsonParser, async (req, res) => {
       );
     },
     (err: Error) => {
-      console.error("Error: failed to add person", err);
+      console.error("Error: failed to add person", err.message);
     }
   );
 });
