@@ -113,10 +113,9 @@ app.get("/api/v2/deals", async (req, res) => {
 
 app.post("/api/deals", jsonParser, async (req, res) => {
   let person = pipedrive.NewPerson.constructFromObject({
-    name: "Sofia",
-    // name: `${req.body.firstName} ${req.body.lastName}`,
-    // phone: req.body.tel,
-    // email: req.body.email,
+    name: `${req.body.firstName} ${req.body.lastName}`,
+    phone: req.body.tel,
+    email: req.body.email,
   });
   let details = {
     title: `Job ${new Date().toDateString()}`,
@@ -134,15 +133,17 @@ app.post("/api/deals", jsonParser, async (req, res) => {
     a410d5e410a890bc06410f91d1efa36477139ca7: req.body.zipCode,
     personId: 7,
   };
-  return await apiPerson.addPerson(person).then(
+  await apiPerson.addPerson(person).then(
     async (data: any) => {
-      // return await api.addDeal(details).then(
-      //   () => res.end({ message: "Deal was added", person }),
-      //   () => {
-      //     res.status(500).json({ message: "something wrong" });
-      //   }
-      // );
-      res.json({ message: "Deal was added", data });
+      details.personId = data.data.id;
+      return await api.addDeal(details).then(
+        () => {
+          res.json({ message: "Deal was added", data: data.data.id });
+        },
+        () => {
+          res.status(500).json({ message: "something wrong" });
+        }
+      );
     },
     (err: Error) => {
       console.error("Error: failed to add person", err.message);
