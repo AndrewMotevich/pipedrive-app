@@ -113,7 +113,7 @@ app.get("/api/v2/deals", async (req, res) => {
 app.post("/api/deals", jsonParser, async (req, res) => {
   let opts = {
     title: `Job ${new Date().toDateString()}`,
-    // "8aca43e96e0e0f529d5fdff8e68a5f65b465c13a": req.body.jobType,
+    "8aca43e96e0e0f529d5fdff8e68a5f65b465c13a": req.body.jobType,
     // "8ce27142967e13865f1ef032a5f6655d45c8ea10": req.body.jobSource,
     // "719eea2bc017593ec818583ef0b1fba77f49cee2": req.body.jobDescription,
     // d71c6545fe0dd5d6570fff4bf9182e9ce230d5b8: req.body.address,
